@@ -1,0 +1,37 @@
+{
+  "name": "bedrock-vue-pdf417",
+  "version": "0.0.1-0",
+  "description": "Vue.js PDF417 scanner component for Bedrock Web apps",
+  "main": "index.js",
+  "peerDependencies": {
+    "bedrock-quasar": "^4.0.0",
+    "vue": "^2.5.16",
+    "vuelidate": "^0.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-vue-pdf417"
+  },
+  "keywords": [
+    "bedrock"
+  ],
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-vue-pdf417/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-vue-pdf417",
+  "dependencies": {
+    "bedrock-web-pdf417": "digitalbazaar/bedrock-web-pdf417#initial"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-digitalbazaar": "^1.6.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "jsdoc-to-markdown": "^4.0.1",
+    "node-fetch": "^2.3.0"
+  }
+}

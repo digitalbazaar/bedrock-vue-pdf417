@@ -1,0 +1,54 @@
+{
+  "name": "bedrock-vue-pdf417-test",
+  "version": "0.0.1-0",
+  "description": "Vue.js PDF417 scanner component for Bedrock Web apps test",
+  "private": true,
+  "main": "index.js",
+  "browser": "./components/index.js",
+  "less": "app.less",
+  "scripts": {
+    "start": "node --preserve-symlinks test.js",
+    "test": "node --preserve-symlinks test.js test --framework karma",
+    "postinstall": "node --preserve-symlinks test.js compile-less"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-vue-pdf417"
+  },
+  "keywords": [
+    "bedrock"
+  ],
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-vue-pdf417/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-vue-pdf417",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "bedrock": "^4.1.0",
+    "bedrock-express": "^3.2.0",
+    "bedrock-karma": "^2.2.0",
+    "bedrock-quasar": "^4.0.0",
+    "bedrock-server": "^2.7.0",
+    "bedrock-test": "^5.3.2",
+    "bedrock-views": "^7.1.0",
+    "bedrock-vue": "^2.1.0",
+    "bedrock-vue-pdf417": "file:..",
+    "bedrock-web": "^1.1.0",
+    "bedrock-webpack": "^3.6.0",
+    "vue": "^2.6.12",
+    "vue-router": "^3.5.1",
+    "vuelidate": "^0.7.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-digitalbazaar": "^1.6.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "jsdoc-to-markdown": "^4.0.1",
+    "node-fetch": "^2.3.0"
+  }
+}
