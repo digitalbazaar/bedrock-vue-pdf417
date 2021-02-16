@@ -88,6 +88,7 @@ export default {
         } catch(e) {
           console.log(e.toString());
           this.scanError = true;
+          this.$emit('result', false);
         } finally {
           this.$q.loading.hide();
         }
