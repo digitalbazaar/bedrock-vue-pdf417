@@ -7,9 +7,8 @@
   "browser": "./components/index.js",
   "less": "app.less",
   "scripts": {
-    "start": "node --preserve-symlinks test.js",
-    "test": "node --preserve-symlinks test.js test --framework karma",
-    "postinstall": "node --preserve-symlinks test.js compile-less"
+    "start": "node --preserve-symlinks dev.js",
+    "test": "node --preserve-symlinks test.js test --framework karma"
   },
   "repository": {
     "type": "git",
