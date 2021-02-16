@@ -2,7 +2,8 @@
   <q-page
     class="column q-col-gutter-md background"
     padding>
-    <scanner />
+    <scanner
+      :errorText="errorText" />
   </q-page>
 </template>
 <script>
@@ -18,7 +19,8 @@ export default {
   components: {Scanner},
   data() {
     return {
-
+      errorText: `There was an error scanning your photo. Please make
+        sure the photo is clear and try again.`
     };
   }
 };

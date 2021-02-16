@@ -57,16 +57,17 @@ import {scan} from 'bedrock-web-pdf417';
 export default {
   name: 'Scanner',
   props: {
-
+    errorText: {
+      type: String,
+      default: '',
+      required: true
+    }
   },
   data() {
     return {
       image: null,
       scanSuccess: false,
-      scanError: false,
-      errorText: `There was an error scanning your photo. Please make
-        sure the photo is clear and try again or enter your driver's license
-        info manually.`
+      scanError: false
     };
   },
   computed: {
@@ -96,9 +97,6 @@ export default {
       this.image.src = url;
     },
     reset() {
-      this.errorText = `There was an error scanning your photo. Please make
-        sure the photo is clear and try again or enter your driver's license
-        info manually.`;
       this.scanSuccess = false;
       this.scanError = false;
       this.image = null;
