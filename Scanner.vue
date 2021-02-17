@@ -67,7 +67,9 @@ export default {
     return {
       image: null,
       scanSuccess: false,
-      scanError: false
+      scanError: false,
+      errorText: `There was an error scanning your photo. Please make
+        sure the photo is clear and try again.`;
     };
   },
   computed: {
@@ -100,6 +102,8 @@ export default {
       this.scanSuccess = false;
       this.scanError = false;
       this.image = null;
+      this.errorText = `There was an error scanning your photo. Please make
+        sure the photo is clear and try again.`;
     }
   }
 };
