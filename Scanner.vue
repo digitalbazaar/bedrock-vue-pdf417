@@ -56,13 +56,7 @@ import {scan} from 'bedrock-web-pdf417';
 
 export default {
   name: 'Scanner',
-  props: {
-    errorText: {
-      type: String,
-      default: '',
-      required: true
-    }
-  },
+  props: {},
   data() {
     return {
       image: null,
