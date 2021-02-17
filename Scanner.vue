@@ -63,7 +63,7 @@ export default {
       scanSuccess: false,
       scanError: false,
       errorText: `There was an error scanning your photo. Please make
-        sure the photo is clear and try again.`;
+        sure the photo is clear and try again.`
     };
   },
   computed: {
