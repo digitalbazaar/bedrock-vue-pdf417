@@ -83,7 +83,6 @@ export default {
           this.scanSuccess = true;
           this.$emit('result', result);
         } catch(e) {
-          console.log(e.toString());
           this.scanError = true;
           this.$emit('result', false);
         } finally {
