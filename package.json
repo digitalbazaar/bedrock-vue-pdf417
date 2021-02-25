@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-vue-pdf417",
   "dependencies": {
-    "bedrock-web-pdf417": "digitalbazaar/bedrock-web-pdf417#initial"
+    "bedrock-web-pdf417": "digitalbazaar/bedrock-web-pdf417#initial",
+    "comlink": "^4.3.0"
   },
   "devDependencies": {
     "eslint": "^5.14.1",

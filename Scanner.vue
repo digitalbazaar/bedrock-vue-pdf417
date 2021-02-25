@@ -52,7 +52,7 @@
   */
 'use strict';
 
-import {scan} from 'bedrock-web-pdf417';
+import {scan} from './worker-api';
 
 export default {
   name: 'Scanner',

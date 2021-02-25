@@ -15,10 +15,15 @@ config.views.bundle.packages.push({
   manifest: path.join(__dirname, 'package.json')
 });
 
+const WorkerPlugin = require('worker-plugin');
+
 config['bedrock-webpack'].configs.push({
   node: {
     fs: 'empty',
     process: true,
     Buffer: true,
-  }
+  },
+  plugins: [
+    new WorkerPlugin()
+  ]
 });

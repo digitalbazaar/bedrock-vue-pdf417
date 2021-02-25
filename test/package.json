@@ -41,7 +41,8 @@
     "bedrock-webpack": "^3.6.0",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
-    "vuelidate": "^0.7.6"
+    "vuelidate": "^0.7.6",
+    "worker-plugin": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^5.14.1",
