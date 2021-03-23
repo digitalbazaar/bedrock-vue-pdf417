@@ -52,7 +52,7 @@
   */
 'use strict';
 
-import {scan} from './worker-api';
+import {scan} from 'bedrock-web-pdf417';
 
 export default {
   name: 'Scanner',
@@ -78,14 +78,22 @@ export default {
         message: 'Scanning your photo! Hang on...'
       });
       this.image.onload = async () => {
+        const st = Date.now();
         try {
           const result = await scan({url});
+          if(!result) {
+            throw new Error('PDF417 barcode not found.');
+          }
+          console.log('SUCCESSFULLY DECODED', result);
           this.scanSuccess = true;
           this.$emit('result', result);
         } catch(e) {
+          console.error(e);
           this.scanError = true;
           this.$emit('result', false);
         } finally {
+          const et = Date.now();
+          console.log('scan time', (et - st) + 'ms');
           this.$q.loading.hide();
         }
       };
