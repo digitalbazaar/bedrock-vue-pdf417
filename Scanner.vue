@@ -53,6 +53,7 @@
 'use strict';
 
 import {scan} from 'bedrock-web-pdf417';
+import Spinner from './Spinner.vue';
 
 export default {
   name: 'Scanner',
@@ -75,6 +76,7 @@ export default {
       this.image = new Image();
       this.$q.loading.show({
         delay: 0, // ms
+        spinner: Spinner,
         message: 'Scanning your photo! Hang on...'
       });
       this.image.onload = async () => {
@@ -97,6 +99,9 @@ export default {
           this.$q.loading.hide();
         }
       };
+      this.image.onerror = async () => {
+        this.$q.loading.hide();
+      };
       this.image.src = url;
     },
     reset() {
@@ -110,6 +115,6 @@ export default {
 };
 
 </script>
-<style lang="scss" scoped>
 
+<style lang="scss" scoped>
 </style>
