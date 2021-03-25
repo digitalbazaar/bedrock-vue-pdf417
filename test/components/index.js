@@ -1,8 +1,6 @@
 /*!
  * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
 import * as brVue from 'bedrock-vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -16,13 +14,11 @@ Vue.use(brVue);
 brVue.setRootVue(async () => {
   // load dynamic imports in parallel
   const [
-    brQuasar,
     Quasar,
     Loading,
     {default: iconSet},
     {default: Vuelidate}
   ] = await Promise.all([
-    import('bedrock-quasar'),
     import('quasar'),
     import('quasar'),
     import('quasar/icon-set/fontawesome-v5'),
@@ -30,6 +26,7 @@ brVue.setRootVue(async () => {
   ]);
 
   // replace default `br-root` with a custom one
+  // eslint-disable-next-line vue/component-definition-name-casing
   Vue.component('br-root', () => import('./BrRoot.vue'));
 
   // install all Vue plugins

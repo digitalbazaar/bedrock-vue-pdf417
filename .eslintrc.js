@@ -1,10 +1,15 @@
 module.exports = {
   root: true,
   env: {
+    node: true,
     browser: true
   },
   extends: [
-    'eslint-config-digitalbazaar',
-    'eslint-config-digitalbazaar/vue'
-  ]
+    'digitalbazaar',
+    'digitalbazaar/vue'
+  ],
+  parserOptions: {
+    // this is required for dynamic import()
+    ecmaVersion: 11
+  },
 };
