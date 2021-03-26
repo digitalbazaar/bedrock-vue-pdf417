@@ -14,11 +14,14 @@ Vue.use(brVue);
 brVue.setRootVue(async () => {
   // load dynamic imports in parallel
   const [
+    // eslint-disable-next-line no-unused-vars
+    brQuasar,
     Quasar,
     Loading,
     {default: iconSet},
     {default: Vuelidate}
   ] = await Promise.all([
+    import('bedrock-quasar'),
     import('quasar'),
     import('quasar'),
     import('quasar/icon-set/fontawesome-v5'),
