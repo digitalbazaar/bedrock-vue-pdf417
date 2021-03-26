@@ -13,19 +13,39 @@
         label="Provide Photo"
         @click="reset(); $refs.file.click()" />
     </div>
-    <div class="row justify-center">
+    <div>
       <div
-        v-show="!image"
+        v-if="scanSuccess || scanError"
         class="q-mt-md">
-        <slot name="instructions">
-          Please provide a photo of a PDF417 barcode.
-        </slot>
+        <div v-if="scanSuccess">
+          <q-icon
+            name="fas fa-check-circle"
+            class="text-positive"
+            style="font-size: 100px" />
+        </div>
+        <div v-if="scanError">
+          <q-icon
+            name="fas fa-times-circle"
+            class="text-red"
+            style="font-size: 100px" />
+        </div>
       </div>
-      <img
-        v-if="image"
-        class="q-mt-md"
-        :src="image.src"
-        style="width: 100%; height: 100%; max-width: 500px;">
+      <div
+        v-else
+        class="row justify-center">
+        <div
+          v-show="!image"
+          class="q-mt-md">
+          <slot name="instructions">
+            Please provide a photo of a PDF417 barcode.
+          </slot>
+        </div>
+        <img
+          v-if="image"
+          class="q-mt-md"
+          :src="image.src"
+          style="width: 100%; height: 100%; max-width: 500px;">
+      </div>
     </div>
     <div
       v-if="scanSuccess || scanError"
