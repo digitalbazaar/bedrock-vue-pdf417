@@ -34,16 +34,16 @@
         v-else
         class="row justify-center">
         <div
-          v-show="!image"
+          v-show="!imageUrl"
           class="q-mt-md">
           <slot name="instructions">
             Please provide a photo of a PDF417 barcode.
           </slot>
         </div>
         <img
-          v-if="image"
+          v-if="imageUrl"
           class="q-mt-md"
-          :src="image.src"
+          :src="imageUrl"
           style="width: 100%; height: 100%; max-width: 500px;">
       </div>
     </div>
@@ -78,7 +78,7 @@ export default {
   props: {},
   data() {
     return {
-      image: null,
+      imageUrl: null,
       scanSuccess: false,
       scanError: false,
       errorText: `There was an error scanning your photo. Please make
@@ -90,14 +90,23 @@ export default {
   },
   methods: {
     async handleFileUpload(e) {
-      const url = URL.createObjectURL(e.target.files[0]);
-      this.image = new Image();
-      this.$q.loading.show({
+      const files = e.target.files;
+
+      // no file selected
+      if(files.length === 0) {
+        return;
+      }
+
+      const reader = new FileReader();
+      const vue = this;
+      vue.$q.loading.show({
         delay: 0, // ms
         spinner: Spinner,
         message: 'Scanning your photo! Hang on...'
       });
-      this.image.onload = async () => {
+      reader.onload = async function(e) {
+        const url = e.target.result;
+        vue.imageUrl = url;
         const st = Date.now();
         try {
           const result = await scan({url});
@@ -105,27 +114,27 @@ export default {
             throw new Error('PDF417 barcode not found.');
           }
           console.log('SUCCESSFULLY DECODED', result);
-          this.scanSuccess = true;
-          this.$emit('result', result);
+          vue.scanSuccess = true;
+          vue.$emit('result', result);
         } catch(e) {
           console.error(e);
-          this.scanError = true;
-          this.$emit('result', false);
+          vue.scanError = true;
+          vue.$emit('result', false);
         } finally {
           const et = Date.now();
           console.log('scan time', (et - st) + 'ms');
-          this.$q.loading.hide();
+          vue.$q.loading.hide();
         }
       };
-      this.image.onerror = async () => {
-        this.$q.loading.hide();
+      reader.onerror = async () => {
+        vue.$q.loading.hide();
       };
-      this.image.src = url;
+      reader.readAsDataURL(files[0]);
     },
     reset() {
       this.scanSuccess = false;
       this.scanError = false;
-      this.image = null;
+      this.imageUrl = null;
       this.errorText = `There was an error scanning your photo. Please make
         sure the photo is clear and try again.`;
     }
