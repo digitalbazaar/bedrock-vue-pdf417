@@ -98,15 +98,14 @@ export default {
       }
 
       const reader = new FileReader();
-      const vue = this;
-      vue.$q.loading.show({
+      this.$q.loading.show({
         delay: 0, // ms
         spinner: Spinner,
         message: 'Scanning your photo! Hang on...'
       });
-      reader.onload = async function(e) {
+      reader.onload = async (e) => {
         const url = e.target.result;
-        vue.imageUrl = url;
+        this.imageUrl = url;
         const st = Date.now();
         try {
           const result = await scan({url});
@@ -114,20 +113,20 @@ export default {
             throw new Error('PDF417 barcode not found.');
           }
           console.log('SUCCESSFULLY DECODED', result);
-          vue.scanSuccess = true;
-          vue.$emit('result', result);
+          this.scanSuccess = true;
+          this.$emit('result', result);
         } catch(e) {
           console.error(e);
-          vue.scanError = true;
-          vue.$emit('result', false);
+          this.scanError = true;
+          this.$emit('result', false);
         } finally {
           const et = Date.now();
           console.log('scan time', (et - st) + 'ms');
-          vue.$q.loading.hide();
+          this.$q.loading.hide();
         }
       };
       reader.onerror = async () => {
-        vue.$q.loading.hide();
+        this.$q.loading.hide();
       };
       reader.readAsDataURL(files[0]);
     },
