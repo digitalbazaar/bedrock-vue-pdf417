@@ -92,9 +92,7 @@ export default {
         sure the photo is clear and try again.`
     };
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {
     async handleFileUpload(e) {
       const files = e.target.files;
@@ -110,7 +108,7 @@ export default {
         spinner: Spinner,
         message: 'Scanning your photo! Hang on...'
       });
-      reader.onload = async (e) => {
+      reader.onload = async e => {
         const url = e.target.result;
         this.imageUrl = url;
         const st = Date.now();
