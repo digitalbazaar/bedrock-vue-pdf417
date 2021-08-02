@@ -8,7 +8,8 @@
         style="display: none"
         @change="handleFileUpload">
       <q-btn
-        color="blue"
+        :color="color ? '' : 'primary'"
+        :style="color ? `background: ${color}` : ''"
         text-color="white"
         label="Provide Photo"
         @click="reset(); $refs.file.click()" />
@@ -75,7 +76,13 @@ import Spinner from './Spinner.vue';
 
 export default {
   name: 'Scanner',
-  props: {},
+  props: {
+    color: {
+      type: String,
+      default: '#1976d2',
+      required: false
+    }
+  },
   data() {
     return {
       imageUrl: null,
