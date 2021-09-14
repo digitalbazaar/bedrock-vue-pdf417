@@ -1,4 +1,4 @@
-# Bedrock Web Verifiable Credentials Store _(bedrock-vue-pdf417)_
+# Bedrock Vue-based PDF417 scanner component _(bedrock-vue-pdf417)_
 
 > A Vue.js PDF417 scanner component for Bedrock Web apps.
 
