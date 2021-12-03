@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="q-mx-md">
     <div class="row justify-center">
       <input
         ref="file"
@@ -8,6 +8,8 @@
         style="display: none"
         @change="handleFileUpload">
       <q-btn
+        v-if="button"
+        class="q-mb-md"
         :color="color ? '' : 'primary'"
         :style="color ? `background: ${color}` : ''"
         text-color="white"
@@ -16,8 +18,7 @@
     </div>
     <div>
       <div
-        v-if="scanSuccess || scanError"
-        class="q-mt-md">
+        v-if="scanSuccess || scanError">
         <div v-if="scanSuccess">
           <q-icon
             name="fas fa-check-circle"
@@ -35,8 +36,7 @@
         v-else
         class="row justify-center">
         <div
-          v-show="!imageUrl"
-          class="q-mt-md">
+          v-show="!imageUrl">
           <slot name="instructions">
             Please provide a photo of a PDF417 barcode.
           </slot>
@@ -77,6 +77,10 @@ import Spinner from './Spinner.vue';
 export default {
   name: 'Scanner',
   props: {
+    button: {
+      type: Boolean,
+      default: false
+    },
     color: {
       type: String,
       default: '#1976d2',
