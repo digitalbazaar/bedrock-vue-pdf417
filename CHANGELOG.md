@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 1.2.0 - TBD
+
+### Added
+- Add optional button prop.
+
 ## 1.1.0 - 2021-08-02
 
 ### Added
