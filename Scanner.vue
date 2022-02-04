@@ -1,5 +1,7 @@
 <template>
-  <div class="q-mx-md">
+  <div
+    class="column full-height"
+    style="min-height: 440px">
     <div class="row justify-center">
       <input
         ref="file"
@@ -16,55 +18,48 @@
         label="Provide Photo"
         @click="reset(); $refs.file.click()" />
     </div>
-    <div>
-      <div
-        v-if="scanSuccess || scanError">
-        <div v-if="scanSuccess">
-          <q-icon
-            name="fas fa-check-circle"
-            class="text-positive"
-            style="font-size: 100px" />
-        </div>
-        <div v-if="scanError">
-          <q-icon
-            name="fas fa-times-circle"
-            class="text-red"
-            style="font-size: 100px" />
-        </div>
+    <slot
+      v-if="!loading && !(scanSuccess || scanError)"
+      name="instructions">
+      Please provide a photo of a PDF417 barcode.
+    </slot>
+    <slot
+      v-if="loading"
+      name="spinner">
+      <div class="row justify-center">
+        <Spinner />
       </div>
-      <div
-        v-else
-        class="row justify-center">
-        <div
-          v-show="!imageUrl">
-          <slot name="instructions">
-            Please provide a photo of a PDF417 barcode.
-          </slot>
-        </div>
-        <img
-          v-if="imageUrl"
-          class="q-mt-md"
-          :src="imageUrl"
-          style="width: 100%; height: 100%; max-width: 500px;">
+    </slot>
+    <slot
+      v-if="scanSuccess"
+      name="success">
+      <div class="row justify-center q-mx-md">
+        <q-icon
+          name="fas fa-check-circle"
+          class="text-positive"
+          style="font-size: 100px" />
+        <q-banner
+          rounded
+          class="text-white bg-green q-mt-md">
+          Your photo has been successfully scanned.
+        </q-banner>
       </div>
-    </div>
-    <div
-      v-if="scanSuccess || scanError"
-      class="q-mt-md q-mx-auto"
-      style="max-width: 500px;">
-      <q-banner
-        v-if="scanSuccess"
-        rounded
-        class="text-white bg-green">
-        Your photo has been successfully scanned.
-      </q-banner>
-      <q-banner
-        v-if="scanError"
-        rounded
-        class="text-white bg-red">
-        {{errorText}}
-      </q-banner>
-    </div>
+    </slot>
+    <slot
+      v-if="scanError"
+      name="error">
+      <div class="row justify-center q-mx-md">
+        <q-icon
+          name="fas fa-times-circle"
+          class="text-red"
+          style="font-size: 100px" />
+        <q-banner
+          rounded
+          class="text-white bg-red q-mt-md">
+          {{errorText}}
+        </q-banner>
+      </div>
+    </slot>
   </div>
 </template>
 <script>
@@ -76,6 +71,9 @@ import Spinner from './Spinner.vue';
 
 export default {
   name: 'Scanner',
+  components: {
+    Spinner
+  },
   props: {
     button: {
       type: Boolean,
@@ -92,6 +90,7 @@ export default {
       imageUrl: null,
       scanSuccess: false,
       scanError: false,
+      loading: false,
       errorText: `There was an error scanning your photo. Please make
         sure the photo is clear and try again.`
     };
@@ -107,14 +106,12 @@ export default {
       }
 
       const reader = new FileReader();
-      this.$q.loading.show({
-        delay: 0, // ms
-        spinner: Spinner,
-        message: 'Scanning your photo! Hang on...'
-      });
+      this.loading = true;
+      this.$emit('loading', true);
       reader.onload = async e => {
         const url = e.target.result;
         this.imageUrl = url;
+        this.$emit('imageUrl', url);
         const st = Date.now();
         try {
           const result = await scan({url});
@@ -131,11 +128,13 @@ export default {
         } finally {
           const et = Date.now();
           console.log('scan time', (et - st) + 'ms');
-          this.$q.loading.hide();
+          this.loading = false;
+          this.$emit('loading', false);
         }
       };
       reader.onerror = async () => {
-        this.$q.loading.hide();
+        this.loading = false;
+        this.$emit('loading', false);
       };
       reader.readAsDataURL(files[0]);
     },

@@ -13,16 +13,14 @@ export default {
 
 <style lang="scss" scoped>
 
-.spinner:before {
+.spinner {
   content: '';
   box-sizing: border-box;
-  position: absolute;
+  position: relative;
   width: 100px;
   height: 100px;
-  margin-top: -100px;
-  margin-left: -50px;
   border-radius: 50%;
-  border-top: 5px solid #fff;
+  border-top: 5px solid #000;
   border-right: 5px solid transparent;
   animation: spinner .6s linear infinite;
 }
