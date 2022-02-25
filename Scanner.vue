@@ -66,7 +66,7 @@
 /*!
   * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
   */
-import {scan} from '@digitalbazaar/bedrock-web-pdf417';
+import {scan} from 'bedrock-web-pdf417';
 import Spinner from './Spinner.vue';
 
 export default {

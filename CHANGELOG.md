@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 2.0.0 -
+
+### Changed
+- **BREAKING**: Use released bedrock-web-pdf417@3.0.0.
+
 ## 1.2.0 - 2021-12-06
 
 ### Added
