@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-vue-pdf417",
   "dependencies": {
-    "@digitalbazaar/bedrock-web-pdf417": "digitalbazaar/bedrock-web-pdf417"
+    "bedrock-web-pdf417": "^3.0.0"
   },
   "peerDependencies": {
     "bedrock-quasar": "^4.0.0",
