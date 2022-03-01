@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-vue-pdf417",
   "dependencies": {
-    "@digitalbazaar/bedrock-web-pdf417": "digitalbazaar/bedrock-web-pdf417"
+    "@digitalbazaar/bedrock-web-pdf417": "digitalbazaar/bedrock-web-pdf417",
+    "dynamsoft-javascript-barcode": "^8.8.7"
   },
   "peerDependencies": {
     "bedrock-quasar": "^4.0.0",
