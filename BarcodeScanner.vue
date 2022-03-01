@@ -39,10 +39,10 @@ export default {
         const settings = await this.scanner.getRuntimeSettings();
         settings.barcodeFormatIds = DBR.EnumBarcodeFormat.BF_PDF417;
         settings.region = {
-          regionLeft: 25,
-          regionTop: 25,
-          regionRight: 75,
-          regionBottom: 75,
+          regionLeft: 5,
+          regionTop: 5,
+          regionRight: 95,
+          regionBottom: 95,
           regionMeasuredByPercentage: 1
         };
         settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
