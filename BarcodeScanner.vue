@@ -2,17 +2,6 @@
   <div>
     <div
       id="barcodeScannerUI" />
-    <q-list
-      dense
-      padding>
-      <q-item
-        v-for="(info, infoIndex) in dlInfo"
-        :key="infoIndex">
-        <q-item-section>
-          {{info.description}}: {{info.value}}
-        </q-item-section>
-      </q-item>
-    </q-list>
   </div>
 </template>
 
@@ -61,7 +50,7 @@ export default {
         this.scanner.soundOnSuccessfulRead = new Audio('./assets/beep.mp3');
         this.scanner.bPlaySoundOnSuccessfulRead = true;
         this.scanner.onUnduplicatedRead = txt => {
-          this.dlInfo = this.getDLInfo(txt);
+          this.$emit('dlInfo', this.getDLInfo(txt));
         };
 
         document.getElementById('barcodeScannerUI')

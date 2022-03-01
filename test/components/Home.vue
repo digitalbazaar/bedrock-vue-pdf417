@@ -3,7 +3,19 @@
     class="column">
     <!-- <scanner
       :button="true" /> -->
-    <BarcodeScanner />
+    <BarcodeScanner
+      @dlInfo="dlInfo = $event" />
+    <q-list
+      dense
+      padding>
+      <q-item
+        v-for="(info, infoIndex) in dlInfo"
+        :key="infoIndex">
+        <q-item-section>
+          {{info.description}}: {{info.value}}
+        </q-item-section>
+      </q-item>
+    </q-list>
   </q-page>
 </template>
 <script>
@@ -18,7 +30,9 @@ export default {
   name: 'Home',
   components: {BarcodeScanner},
   data() {
-    return {};
+    return {
+      dlInfo: null
+    };
   }
 };
 </script>
