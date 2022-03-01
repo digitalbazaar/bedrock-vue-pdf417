@@ -2,14 +2,23 @@
   <div>
     <div
       id="barcodeScannerUI" />
-    <div class="row justify-center">
-      {{text}}
-    </div>
+    <q-list
+      dense
+      padding>
+      <q-item
+        v-for="(info, infoIndex) in dlInfo"
+        :key="infoIndex">
+        <q-item-section>
+          {{info.description}}: {{info.value}}
+        </q-item-section>
+      </q-item>
+    </q-list>
   </div>
 </template>
 
 <script>
 import DBR from './dbr';
+import driverLicenseFields from './driverLicenseFields.js';
 
 export default {
   name: 'BarcodeScanner',
@@ -18,7 +27,7 @@ export default {
       isLoadingCamera: true,
       isDestroyed: false,
       scanner: null,
-      text: 'No result'
+      dlInfo: null
     };
   },
   async mounted() {
@@ -49,8 +58,10 @@ export default {
         settings.deblurLevel = 7;
         this.scanner.updateRuntimeSettings(settings);
 
-        this.scanner.onUnduplicatedRead = (txt, result) => {
-          this.text = txt;
+        this.scanner.soundOnSuccessfulRead = new Audio('./assets/beep.mp3');
+        this.scanner.bPlaySoundOnSuccessfulRead = true;
+        this.scanner.onUnduplicatedRead = txt => {
+          this.dlInfo = this.getDLInfo(txt);
         };
 
         document.getElementById('barcodeScannerUI')
@@ -67,6 +78,29 @@ export default {
       } catch(e) {
         console.log(e);
       }
+    },
+    getDLInfo(txt) {
+      const lines = txt.split('\n');
+      const abbrs = Object.keys(driverLicenseFields);
+      const dlInfo = {};
+      lines.forEach((line, i) => {
+        let abbr;
+        let content;
+        if(i === 1) {
+          abbr = 'DAQ';
+          content = line.substring(line.indexOf(abbr) + 3);
+        } else {
+          abbr = line.substring(0, 3);
+          content = line.substring(3).trim();
+        }
+        if(abbrs.includes(abbr)) {
+          dlInfo[abbr] = {
+            description: driverLicenseFields[abbr],
+            value: content,
+          };
+        }
+      });
+      return dlInfo;
     },
   }
 };
