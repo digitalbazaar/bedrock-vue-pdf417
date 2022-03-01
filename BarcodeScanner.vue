@@ -16,10 +16,49 @@ export default {
       isLoadingCamera: true,
       isDestroyed: false,
       scanner: null,
-      dlInfo: null
+      dlInfo: null,
+      clientHeight: null,
+      clientWidth: null,
+      regionScale: 0.4
     };
   },
+  computed: {
+    regionMaskEdgeLength() {
+      const regionMaskEdgeLength =
+        this.regionScale * Math.min(this.clientWidth, this.clientHeight);
+      return Math.floor(regionMaskEdgeLength);
+    },
+    regionLeft() {
+      const left =
+        (this.clientWidth - this.regionMaskEdgeLength) / 2 / this.clientWidth;
+      if(this.clientWidth > this.clientHeight) {
+        return Math.round(left * 100) - 25;
+      } else {
+        return Math.round(left * 100) - 20;
+      }
+    },
+    regionTop() {
+      const top =
+        (this.clientHeight - this.regionMaskEdgeLength) / 2 / this.clientHeight;
+      if(this.clientWidth > this.clientHeight) {
+        return Math.round(top * 100) - 5;
+      } else {
+        return Math.round(top * 100) - 5;
+      }
+    },
+    region() {
+      return {
+        regionLeft: this.regionLeft,
+        regionRight: 100 - this.regionLeft,
+        regionTop: this.regionTop,
+        regionBottom: 100 - this.regionTop,
+        regionMeasuredByPercentage: 1,
+      };
+    },
+  },
   async mounted() {
+    this.clientHeight = document.body.clientHeight;
+    this.clientWidth = document.body.clientWidth;
     await this.showScanner();
   },
   beforeDestroy() {
@@ -36,16 +75,18 @@ export default {
           (this.scanner = await DBR.BarcodeScanner.createInstance());
         const settings = await this.scanner.getRuntimeSettings();
         settings.barcodeFormatIds = DBR.EnumBarcodeFormat.BF_PDF417;
-        settings.region = {
-          regionLeft: 5,
-          regionTop: 5,
-          regionRight: 95,
-          regionBottom: 95,
-          regionMeasuredByPercentage: 1
-        };
+        settings.region = this.region;
         settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
         settings.deblurLevel = 7;
         this.scanner.updateRuntimeSettings(settings);
+
+        await this.scanner.updateVideoSettings({
+          video: {
+            width: 1920,
+            height: 1080,
+            facingMode: 'environment',
+          },
+        });
 
         this.scanner.soundOnSuccessfulRead = new Audio('./assets/beep.mp3');
         this.scanner.bPlaySoundOnSuccessfulRead = true;
@@ -55,6 +96,7 @@ export default {
 
         document.getElementById('barcodeScannerUI')
           .appendChild(this.scanner.getUIElement());
+        document.querySelector('#barcodeScannerUI div').style.background = '';
         document.getElementsByClassName('dce-sel-camera')[0].hidden = true;
         document.getElementsByClassName('dce-sel-resolution')[0]
           .hidden = true;
@@ -95,12 +137,9 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #barcodeScannerUI {
     width: 100vw;
     height: 100vh;
-    /* position: absolute;
-    top: 0; */
   }
 </style>
