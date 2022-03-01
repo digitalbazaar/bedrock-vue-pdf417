@@ -21,7 +21,9 @@
     <slot
       v-if="!loading && !(scanSuccess || scanError)"
       name="instructions">
-      Please provide a photo of a PDF417 barcode.
+      <div class="row justify-center">
+        Please provide a photo of a PDF417 barcode.
+      </div>
     </slot>
     <slot
       v-if="loading"
@@ -144,6 +146,9 @@ export default {
       this.imageUrl = null;
       this.errorText = `There was an error scanning your photo. Please make
         sure the photo is clear and try again.`;
+    },
+    startScanner() {
+      console.log('Scanner Started');
     }
   }
 };

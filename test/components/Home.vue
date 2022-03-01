@@ -1,8 +1,9 @@
 <template>
   <q-page
-    class="column q-col-gutter-md background"
-    padding>
-    <scanner />
+    class="column">
+    <!-- <scanner
+      :button="true" /> -->
+    <BarcodeScanner />
   </q-page>
 </template>
 <script>
@@ -11,11 +12,11 @@
  */
 'use strict';
 
-import {Scanner} from 'bedrock-vue-pdf417';
+import {BarcodeScanner} from 'bedrock-vue-pdf417';
 
 export default {
   name: 'Home',
-  components: {Scanner},
+  components: {BarcodeScanner},
   data() {
     return {};
   }
