@@ -30,6 +30,7 @@
     "@fortawesome/fontawesome-free": "^5.15.2",
     "bedrock": "^4.1.0",
     "bedrock-express": "^3.2.0",
+    "bedrock-fontawesome": "^1.0.0",
     "bedrock-karma": "digitalbazaar/bedrock-karma#update-deps",
     "bedrock-quasar": "^4.0.0",
     "bedrock-server": "^2.7.0",

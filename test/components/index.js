@@ -4,6 +4,7 @@
 import * as brVue from 'bedrock-vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import 'bedrock-fontawesome';
 
 // FIXME: make configurable
 Vue.config.devtools = true;
