@@ -20,7 +20,7 @@ export default {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border-top: 5px solid #000;
+  border-top: 5px solid #393A39;
   border-right: 5px solid transparent;
   animation: spinner .6s linear infinite;
 }

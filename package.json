@@ -27,6 +27,7 @@
     "dynamsoft-javascript-barcode": "^8.8.7"
   },
   "peerDependencies": {
+    "bedrock-fontawesome": "^1.0.0",
     "bedrock-quasar": "^4.0.0",
     "vue": "^2.5.16",
     "vuelidate": "^0.7.4"
