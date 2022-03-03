@@ -60,7 +60,7 @@ import driverLicenseFields from './driverLicenseFields.js';
 import Buttons from './Buttons.vue';
 import Spinner from './Spinner.vue';
 
-DBR.BarcodeReader.organizationID = '100902848';
+DBR.BarcodeReader.license = '100902848';
 
 export default {
   name: 'BarcodeScanner',
