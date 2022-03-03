@@ -3,6 +3,7 @@
     class="column">
     <BarcodeScanner
       v-if="!result && !error"
+      :license="license"
       @result="result = $event"
       @error="error = $event" />
     <q-btn
@@ -42,6 +43,7 @@ export default {
   components: {BarcodeScanner},
   data() {
     return {
+      license: '100902848',
       result: null,
       error: null
     };

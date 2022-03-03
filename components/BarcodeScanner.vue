@@ -60,8 +60,6 @@ import driverLicenseFields from '../helpers/driverLicenseFields.js';
 import Buttons from './Buttons.vue';
 import Spinner from './Spinner.vue';
 
-DBR.BarcodeReader.license = '100902848';
-
 export default {
   name: 'BarcodeScanner',
   components: {
@@ -69,6 +67,10 @@ export default {
     Spinner
   },
   props: {
+    license: {
+      type: String,
+      required: true
+    },
     tipText: {
       type: String,
       default: 'Scan barcode on the back of license.'
@@ -105,18 +107,22 @@ export default {
       const left =
         (this.clientWidth - this.regionMaskEdgeLength) / 2 / this.clientWidth;
       if(this.clientWidth > this.clientHeight) {
+        // this creates a percentage
         return Math.round(left * 100) - 25;
       } else {
+        // this creates a percentage
         return Math.round(left * 100) - 20;
       }
     },
     regionTop() {
       const top =
         (this.clientHeight - this.regionMaskEdgeLength) / 2 / this.clientHeight;
+      // this creates a percentage
       return Math.round(top * 100) - 5;
     },
     region() {
       return {
+        // regions are calculated by percent
         regionLeft: this.regionLeft,
         regionRight: 100 - this.regionLeft,
         regionTop: this.regionTop,
@@ -126,17 +132,22 @@ export default {
     },
   },
   async mounted() {
+    DBR.BarcodeReader.license = this.license;
     this.clientHeight = document.body.clientHeight;
     this.clientWidth = document.body.clientWidth;
     this.maskCanvas = document.getElementById('guide');
     this.maskCanvasContext = this.maskCanvas.getContext('2d');
     this.cvsDrawArea();
+
+    let resizeTimer;
     window.onresize = () => {
-      this.isResizing = true;
-      this.clientHeight = document.body.clientHeight;
-      this.clientWidth = document.body.clientWidth;
-      this.cvsDrawArea();
-      this.isResizing = false;
+      const _this = this;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        _this.clientHeight = document.body.clientHeight;
+        _this.clientWidth = document.body.clientWidth;
+        _this.cvsDrawArea();
+      }, 250);
     };
     await this.showScanner();
     try {
@@ -144,6 +155,7 @@ export default {
       this.currentCamera = await this.scanner.getCurrentCamera();
     } catch(e) {
       console.log(e);
+      this.$emit('error', e.message);
     }
   },
   beforeDestroy() {
@@ -291,7 +303,7 @@ export default {
           console.error(e);
           this.$emit('error', e.message);
         };
-        reader.readAsDataURL(files[0]);
+        reader.readAsDataURL(files[i]);
       }
     },
     async imageScan() {
