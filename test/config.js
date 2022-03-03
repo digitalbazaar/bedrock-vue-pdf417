@@ -8,7 +8,6 @@ const path = require('path');
 require('bedrock-views');
 
 config.paths.cache = path.join(__dirname, '.cache');
-config.express.httpOnly = true;
 
 // add pseudo packages
 config.views.bundle.packages.push({
