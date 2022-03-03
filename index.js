@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
  */
-import Scanner from './Scanner.vue';
-import BarcodeScanner from './BarcodeScanner.vue';
+import Scanner from './components/Scanner.vue';
+import BarcodeScanner from './components/BarcodeScanner.vue';
 
 export {Scanner, BarcodeScanner};

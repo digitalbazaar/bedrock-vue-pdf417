@@ -55,8 +55,8 @@
 /*!
   * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
   */
-import DBR from './dbr';
-import driverLicenseFields from './driverLicenseFields.js';
+import DBR from '../helpers/dbr.js';
+import driverLicenseFields from '../helpers/driverLicenseFields.js';
 import Buttons from './Buttons.vue';
 import Spinner from './Spinner.vue';
 
