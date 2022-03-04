@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 2.0.1 - TBD
+
+### Fixed
+- Fix bug with license and spinner.
+
 ## 2.0.0 - 2022-03-04
 
 ### Added
