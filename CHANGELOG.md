@@ -1,9 +1,9 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 2.0.0 - TBD
+## 2.0.0 - 2022-03-04
 
 ### Added
-- Add new BarcodeScanner.
+- **BREAKING**: Add new BarcodeScanner.
 - Add slots for Scanner.
 
 ## 1.2.0 - 2021-12-06
