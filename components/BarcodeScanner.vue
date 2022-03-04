@@ -5,7 +5,7 @@
     <!-- Spinners -->
     <div class="full-height row items-center">
       <slot
-        v-if="loadingCamera"
+        v-if="loadingCamera && !scanning"
         name="cameraSpinner">
         <Spinner />
       </slot>
@@ -132,7 +132,9 @@ export default {
     },
   },
   async mounted() {
-    DBR.BarcodeReader.license = this.license;
+    if(!DBR.BarcodeReader.license) {
+      DBR.BarcodeReader.license = this.license;
+    }
     this.clientHeight = document.body.clientHeight;
     this.clientWidth = document.body.clientWidth;
     this.maskCanvas = document.getElementById('guide');
