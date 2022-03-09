@@ -189,7 +189,7 @@ export default {
       this.cameraList = await this.scanner.getAllCameras();
       this.currentCamera = await this.scanner.getCurrentCamera();
     } catch(e) {
-      console.log(e);
+      console.error(e);
       this.$emit('error', e.message);
     }
   },
@@ -234,6 +234,7 @@ export default {
 
         await this.scanner.open();
       } catch(e) {
+        console.error(e);
         this.cameraError = true;
       } finally {
         this.loadingCamera = false;
