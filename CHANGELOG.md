@@ -1,6 +1,6 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 2.2.0 - TBD
+## 2.2.0 - 2022-03-09
 
 ### Changed
 - Update buttons to be disable while loading camera or scanning.
