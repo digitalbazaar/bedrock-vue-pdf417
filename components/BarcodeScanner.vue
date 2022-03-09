@@ -2,6 +2,15 @@
   <div
     ref="videoContainer"
     class="videoContainer row justify-center items-center">
+    <!-- Camera Error -->
+    <div
+      v-if="cameraError && !scanning"
+      class="text-center">
+      <div style="max-width: 250px">
+        There was an error loading your camera. Please upload a photo instead
+        or refresh the page.
+      </div>
+    </div>
     <!-- Spinners -->
     <div class="full-height row items-center">
       <slot
@@ -67,8 +76,8 @@ export default {
     Spinner
   },
   props: {
-    license: {
-      type: String,
+    pdf417: {
+      type: Object,
       required: true
     },
     tipText: {
@@ -95,6 +104,7 @@ export default {
       currentCamera: null,
       maskCanvas: null,
       maskCanvasContext: null,
+      cameraError: false
     };
   },
   computed: {
@@ -133,7 +143,10 @@ export default {
   },
   async mounted() {
     if(!DBR.BarcodeReader.license) {
-      DBR.BarcodeReader.license = this.license;
+      DBR.BarcodeReader.license = this.pdf417.license;
+      if(this.pdf417.licenseServer) {
+        DBR.BarcodeReader.licenseServer = this.pdf417.licenseServer;
+      }
     }
     this.clientHeight = document.body.clientHeight;
     this.clientWidth = document.body.clientWidth;
@@ -202,6 +215,10 @@ export default {
         await this.scanner.open();
       } catch(e) {
         console.error(e);
+        if(e.message === 'Requested device not found') {
+          this.cameraError = true;
+          return;
+        }
         this.$emit('error', e.message);
       } finally {
         this.loadingCamera = false;
