@@ -4,43 +4,59 @@
     class="videoContainer row justify-center items-center">
     <!-- Camera Error -->
     <div
-      v-if="cameraError && !scanning"
+      v-if="cameraError"
       class="text-center">
-      <div style="max-width: 250px">
+      <div
+        class="row items-center justify-center">
+        <q-icon
+          color="red-12"
+          name="fas fa-times"
+          class="icon q-pa-lg" />
+      </div>
+      <div
+        class="q-mt-md"
+        style="max-width: 250px">
         There was an error loading your camera. Please upload a photo instead
         or refresh the page.
       </div>
     </div>
-    <!-- Spinners -->
-    <div class="full-height row items-center">
-      <slot
-        v-if="loadingCamera && !scanning"
-        name="cameraSpinner">
-        <Spinner />
-      </slot>
-      <slot
-        v-if="scanning"
-        name="scannerSpinner">
-        <Spinner />
-      </slot>
-    </div>
-    <!-- Video Stream -->
-    <video
-      class="dbrScanner-video"
-      playsinline="true" />
-    <!-- Guide -->
-    <canvas
-      v-show="!loadingCamera && !scanning"
-      id="guide"
-      style="position: absolute; top:0; height: 100%; width: 100%" />
-    <!-- Tip Text -->
     <div
-      v-if="!loadingCamera && !scanning"
-      class="text-white"
-      style="position: absolute;"
-      :style="`bottom: calc(${regionTop}% - 30px)`">
-      {{tipText}}
+      v-else
+      class="row justify-center items-center">
+      <!-- Spinners -->
+      <div class="full-height row items-center">
+        <slot
+          v-if="loadingCamera && !scanning"
+          name="cameraSpinner">
+          <Spinner />
+        </slot>
+        <slot
+          v-if="scanning"
+          name="scannerSpinner">
+          <Spinner />
+        </slot>
+      </div>
+      <!-- Video Stream -->
+      <video
+        class="dbrScanner-video"
+        playsinline="true" />
+      <!-- Guide -->
+      <canvas
+        v-show="!loadingCamera && !scanning"
+        id="guide"
+        ref="guide"
+        style="position: absolute; top:0; height: 100%; width: 100%" />
+      <!-- Tip Text -->
+      <div
+        v-if="!loadingCamera && !scanning"
+        ref="tipText"
+        class="text-white"
+        style="position: absolute;"
+        :style="`bottom: calc(${regionTop}% - 30px)`">
+        {{tipText}}
+      </div>
     </div>
+
     <!-- Close -->
     <q-btn
       v-if="!loadingCamera && !scanning"
@@ -48,12 +64,14 @@
       fab
       :ripple="false"
       size="16px"
-      color="white"
+      :color="cameraError ? 'priamry' : 'white'"
       icon="fas fa-times"
       class="q-ma-sm close-btn"
       @click.native="close()" />
     <!-- Buttons -->
     <Buttons
+      :loading-camera="loadingCamera"
+      :scanning="scanning"
       :camera-list="cameraList"
       @updateCamera="updateCamera($event)"
       @upload="upload($event)" />
@@ -216,12 +234,7 @@ export default {
 
         await this.scanner.open();
       } catch(e) {
-        console.error(e);
-        if(e.message === 'Requested device not found') {
-          this.cameraError = true;
-          return;
-        }
-        this.$emit('error', e.message);
+        this.cameraError = true;
       } finally {
         this.loadingCamera = false;
       }
@@ -288,6 +301,7 @@ export default {
       this.loading = false;
     },
     async upload(event) {
+      this.cameraError = false;
       await this.imageScan();
 
       const files = event.target.files;

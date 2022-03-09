@@ -11,7 +11,8 @@
       label="Camera"
       style="font-weight: 600"
       icon="fas fa-video"
-      dropdown-icon="none">
+      dropdown-icon="none"
+      :disabled="loadingCamera || scanning">
       <q-list>
         <q-item
           v-for="camera in cameraList"
@@ -39,6 +40,7 @@
       label="Upload"
       style="border-left: 1px solid #62605e; font-weight: 600"
       icon="fas fa-file-upload"
+      :disabled="loadingCamera || scanning"
       @click="$refs.uploadImage.click()" />
   </q-btn-group>
 </template>
@@ -56,6 +58,14 @@ export default {
   props: {
     cameraList: {
       type: Array,
+      default: undefined
+    },
+    loadingCamera: {
+      type: Boolean,
+      default: undefined
+    },
+    scanning: {
+      type: Boolean,
       default: undefined
     }
   },
