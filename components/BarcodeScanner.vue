@@ -144,6 +144,7 @@ export default {
   async mounted() {
     if(!DBR.BarcodeReader.license) {
       DBR.BarcodeReader.license = this.pdf417.license;
+      // note: this allows developers to optionally use a Dynamsoft SDK
       if(this.pdf417.licenseServer) {
         DBR.BarcodeReader.licenseServer = this.pdf417.licenseServer;
       }
