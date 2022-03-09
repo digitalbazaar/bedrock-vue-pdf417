@@ -1,5 +1,11 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 2.1.0 - TBD
+
+### Changed
+- Update BarcodeScanner to now accept a licenceServer.
+- Add error message if camera fails to load.
+
 ## 2.0.1 - 2022-03-04
 
 ### Fixed
