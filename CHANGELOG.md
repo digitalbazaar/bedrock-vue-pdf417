@@ -1,6 +1,6 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 2.1.0 - TBD
+## 2.1.0 - 2022-03-09
 
 ### Changed
 - Update BarcodeScanner to now accept a licenceServer.
