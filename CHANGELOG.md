@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 2.2.1 - 2022-03-09
+
+### Fixed
+- Fix invalid 2.2.0 release.
+
 ## 2.2.0 - 2022-03-09
 
 ### Changed
