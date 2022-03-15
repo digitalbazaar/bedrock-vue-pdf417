@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 3.0.0 - TBD
+
+### Removed
+- **BREAKING**: Removed Scanner from library.
+
 ## 2.2.1 - 2022-03-09
 
 ### Fixed
