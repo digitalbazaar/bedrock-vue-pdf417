@@ -1,9 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 3.0.0 - TBD
+## 3.0.0 - 2022-03-15
 
 ### Removed
-- **BREAKING**: Removed Scanner from library.
+- **BREAKING**: Removed old `Scanner` class from library. Now, only
+  `BarcodeScanner` is supported.
 
 ## 2.2.1 - 2022-03-09
 
