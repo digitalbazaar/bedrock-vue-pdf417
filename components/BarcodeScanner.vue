@@ -37,8 +37,9 @@
         </slot>
       </div>
       <!-- Video Stream -->
+      <!-- <div class="dce-video-container" /> -->
       <video
-        class="dbrScanner-video"
+        class="dce-video"
         playsinline="true" />
       <!-- Guide -->
       <canvas
@@ -82,7 +83,8 @@
 /*!
   * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
   */
-import DBR from '../helpers/dbr.js';
+import BarcodeReader from '../helpers/dbr.js';
+import {BarcodeScanner, EnumBarcodeFormat} from 'dynamsoft-javascript-barcode';
 import driverLicenseFields from '../helpers/driverLicenseFields.js';
 import Buttons from './Buttons.vue';
 import Spinner from './Spinner.vue';
@@ -160,12 +162,12 @@ export default {
     },
   },
   async mounted() {
-    if(!DBR.BarcodeReader.license) {
-      DBR.BarcodeReader.license = this.pdf417.license;
+    if(!BarcodeReader.license) {
+      BarcodeReader.license = this.pdf417.license;
       // note: this allows developers to optionally use a Dynamsoft SDK
       // developer license
       if(this.pdf417.licenseServer) {
-        DBR.BarcodeReader.licenseServer = this.pdf417.licenseServer;
+        BarcodeReader.licenseServer = this.pdf417.licenseServer;
       }
     }
     this.clientHeight = document.body.clientHeight;
@@ -193,10 +195,10 @@ export default {
       this.$emit('error', e.message);
     }
   },
-  beforeDestroy() {
+  async beforeDestroy() {
     this.isDestroyed = true;
     if(this.scanner) {
-      this.scanner.destroy();
+      await this.scanner.destroyContext();
     }
   },
   methods: {
@@ -204,9 +206,9 @@ export default {
       this.loadingCamera = true;
       try {
         this.scanner ||
-          (this.scanner = await DBR.BarcodeScanner.createInstance());
+          (this.scanner = await BarcodeScanner.createInstance());
         const settings = await this.scanner.getRuntimeSettings();
-        settings.barcodeFormatIds = DBR.EnumBarcodeFormat.BF_PDF417;
+        settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
         settings.region = this.region;
         settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
         settings.deblurLevel = 7;
@@ -343,9 +345,9 @@ export default {
       }
     },
     async imageScan() {
-      this.reader || (this.reader = await DBR.BarcodeReader.createInstance());
+      this.reader || (this.reader = await BarcodeReader.createInstance());
       const settings = await this.reader.getRuntimeSettings();
-      settings.barcodeFormatIds = DBR.EnumBarcodeFormat.BF_PDF417;
+      settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
       settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
       settings.deblurLevel = 7;
       await this.reader.updateRuntimeSettings(settings);
@@ -368,7 +370,7 @@ export default {
     left: 0
   }
 
-  .dbrScanner-video {
+  .dce-video {
     width: 100%;
     height: 100%;
     object-fit: cover;

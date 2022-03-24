@@ -1,4 +1,4 @@
-import DBR from 'dynamsoft-javascript-barcode';
-DBR.BarcodeReader.engineResourcePath =
-  'https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@8.8.7/dist/';
-export default DBR;
+import {BarcodeReader} from 'dynamsoft-javascript-barcode';
+BarcodeReader.engineResourcePath =
+  'https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@9.0.0/dist/';
+export default BarcodeReader;
