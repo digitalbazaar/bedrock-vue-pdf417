@@ -3,6 +3,7 @@
     class="column">
     <BarcodeScanner
       v-if="!result && !error"
+      guide-color="#63C6C2"
       :pdf417="pdf417"
       @result="result = $event"
       @error="error = $event" />
