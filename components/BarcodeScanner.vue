@@ -37,16 +37,7 @@
         </slot>
       </div>
       <!-- Video Stream -->
-      <!-- <div class="dce-video-container" /> -->
-      <video
-        class="dce-video"
-        playsinline="true" />
-      <!-- Guide -->
-      <canvas
-        v-show="!loadingCamera && !scanning"
-        id="guide"
-        ref="guide"
-        style="position: absolute; top:0; height: 100%; width: 100%" />
+      <div class="dce-video-container" />
       <!-- Tip Text -->
       <div
         v-if="!loadingCamera && !scanning"
@@ -122,8 +113,6 @@ export default {
       regionScale: 0.4,
       cameraList: [],
       currentCamera: null,
-      maskCanvas: null,
-      maskCanvasContext: null,
       cameraError: false
     };
   },
@@ -172,20 +161,17 @@ export default {
     }
     this.clientHeight = document.body.clientHeight;
     this.clientWidth = document.body.clientWidth;
-    this.maskCanvas = document.getElementById('guide');
-    this.maskCanvasContext = this.maskCanvas.getContext('2d');
-    this.cvsDrawArea();
 
-    let resizeTimer;
-    window.onresize = () => {
-      const _this = this;
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        _this.clientHeight = document.body.clientHeight;
-        _this.clientWidth = document.body.clientWidth;
-        _this.cvsDrawArea();
-      }, 250);
-    };
+    // let resizeTimer;
+    // window.onresize = () => {
+    //   const _this = this;
+    //   clearTimeout(resizeTimer);
+    //   resizeTimer = setTimeout(() => {
+    //     _this.clientHeight = document.body.clientHeight;
+    //     _this.clientWidth = document.body.clientWidth;
+    //     _this.cvsDrawArea();
+    //   }, 250);
+    // };
     await this.showScanner();
     try {
       this.cameraList = await this.scanner.getAllCameras();
@@ -207,6 +193,7 @@ export default {
       try {
         this.scanner ||
           (this.scanner = await BarcodeScanner.createInstance());
+        console.log(this.scanner);
         const settings = await this.scanner.getRuntimeSettings();
         settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
         settings.region = this.region;
@@ -232,6 +219,8 @@ export default {
           this.$emit('result', this.getDLInfo(txt));
         };
 
+        this.scanner.dce.regionMaskStrokeStyle = this.guideColor;
+        // this.scanner.dce.videoFit = 'cover';
         await this.scanner.setUIElement(this.$refs.videoContainer);
 
         await this.scanner.open();
