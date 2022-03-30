@@ -1,9 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 4.0.1 - 2022-03-30
+## 4.0.1 - 2022-03-xx
 
 ### Fixed
-- Fixed issue with camera error.
+- Fix issue with camera errors; handle them within the
+  `BarcodeScanner` component.
 
 ## 4.0.0 - 2022-03-30
 
