@@ -177,7 +177,6 @@ export default {
       try {
         this.scanner ||
           (this.scanner = await BarcodeScanner.createInstance());
-        console.log(this.scanner);
         const settings = await this.scanner.getRuntimeSettings();
         settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
         settings.region = this.region;
