@@ -9,8 +9,6 @@ require('bedrock-views');
 
 config.paths.cache = path.join(__dirname, '.cache');
 
-config.express.httpOnly = true;
-
 // add pseudo packages
 config.views.bundle.packages.push({
   path: path.join(__dirname, 'components'),

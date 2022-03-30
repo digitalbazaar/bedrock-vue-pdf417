@@ -153,25 +153,9 @@ export default {
   async mounted() {
     if(!BarcodeReader.license) {
       BarcodeReader.license = this.pdf417.license;
-      // note: this allows developers to optionally use a Dynamsoft SDK
-      // developer license
-      if(this.pdf417.licenseServer) {
-        BarcodeReader.licenseServer = this.pdf417.licenseServer;
-      }
     }
     this.clientHeight = document.body.clientHeight;
     this.clientWidth = document.body.clientWidth;
-
-    // let resizeTimer;
-    // window.onresize = () => {
-    //   const _this = this;
-    //   clearTimeout(resizeTimer);
-    //   resizeTimer = setTimeout(() => {
-    //     _this.clientHeight = document.body.clientHeight;
-    //     _this.clientWidth = document.body.clientWidth;
-    //     _this.cvsDrawArea();
-    //   }, 250);
-    // };
     await this.showScanner();
     try {
       this.cameraList = await this.scanner.getAllCameras();
@@ -215,12 +199,12 @@ export default {
           },
         });
 
-        this.scanner.onUnduplicatedRead = txt => {
+        this.scanner.onUniqueRead = txt => {
           this.$emit('result', this.getDLInfo(txt));
         };
 
         this.scanner.dce.regionMaskStrokeStyle = this.guideColor;
-        // this.scanner.dce.videoFit = 'cover';
+        this.scanner.dce.videoFit = 'cover';
         await this.scanner.setUIElement(this.$refs.videoContainer);
 
         await this.scanner.open();
@@ -357,12 +341,6 @@ export default {
     z-index: 6000;
     top: 0;
     left: 0
-  }
-
-  .dce-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   .close-btn {
