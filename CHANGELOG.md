@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 4.0.1 - 2022-03-30
+
+### Fixed
+- Fixed issue with camera error.
+
 ## 4.0.0 - 2022-03-30
 
 ### Changed

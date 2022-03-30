@@ -162,7 +162,7 @@ export default {
       this.currentCamera = await this.scanner.getCurrentCamera();
     } catch(e) {
       console.error(e);
-      this.$emit('error', e.message);
+      this.cameraError = true;
     }
   },
   async beforeDestroy() {
