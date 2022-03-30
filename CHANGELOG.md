@@ -1,6 +1,6 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 4.0.0 - TBD
+## 4.0.0 - 2022-03-30
 
 ### Changed
 - **BREAKING**: Upgrade `BarcodeScanner` to v9.
