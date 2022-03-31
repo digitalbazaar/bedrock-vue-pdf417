@@ -38,15 +38,16 @@
       </div>
       <!-- Video Stream -->
       <div class="dce-video-container" />
-      <!-- Tip Text -->
-      <div
-        v-if="!loadingCamera && !scanning"
-        ref="tipText"
-        class="text-white"
-        style="position: absolute;"
-        :style="`bottom: calc(${regionTop}% - 30px)`">
-        {{tipText}}
-      </div>
+    </div>
+
+    <!-- Tip Text -->
+    <div
+      v-if="!cameraError && !loadingCamera && !scanning"
+      ref="tipText"
+      class="text-white text-center"
+      style="position: absolute;"
+      :style="`bottom: calc(${regionTop}% - 30px)`">
+      {{tipText}}
     </div>
 
     <!-- Close -->
