@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 4.0.2 - TBD
+
+### Fixed
+- Fix issue with tip text being offset on mobile.
+
 ## 4.0.1 - 2022-03-30
 
 ### Fixed
