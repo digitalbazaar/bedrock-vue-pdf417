@@ -31,13 +31,12 @@
     </div>
   </q-page>
 </template>
+
 <script>
 /*!
- * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-import {BarcodeScanner} from 'bedrock-vue-pdf417';
+import {BarcodeScanner} from '@bedrock/vue-pdf417';
 
 export default {
   name: 'Home',
@@ -60,6 +59,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .full-width {
   width: 100%;

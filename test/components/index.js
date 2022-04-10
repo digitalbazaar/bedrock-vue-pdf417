@@ -1,10 +1,10 @@
 /*!
- * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
-import * as brVue from 'bedrock-vue';
+import * as brVue from '@bedrock/vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import 'bedrock-fontawesome';
+import '@bedrock/web-fontawesome';
 
 // FIXME: make configurable
 Vue.config.devtools = true;

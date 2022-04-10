@@ -1,5 +1,11 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 5.0.0 - 2022-04-xx
+
+### Changed
+- **BREAKING**: Rename package to `@bedrock/vue-pdf417`.
+- **BREAKING**: Convert to module (ESM).
+
 ## 4.0.2 - 2022-03-31
 
 ### Fixed

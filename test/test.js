@@ -1,13 +1,13 @@
 /*!
- * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
+import * as bedrock from '@bedrock/core';
+import '@bedrock/views';
+import '@bedrock/webpack';
 
-const bedrock = require('bedrock');
-require('bedrock-karma');
-require('bedrock-views');
-require('bedrock-webpack');
-require('./config');
+import './config.js';
 
-require('bedrock-test');
+import '@bedrock/test';
+import '@bedrock/karma';
+
 bedrock.start();
