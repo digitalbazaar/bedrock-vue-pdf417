@@ -75,9 +75,9 @@
 /*!
   * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
   */
-import BarcodeReader from '../helpers/dbr.js';
+import BarcodeReader from '../lib/helpers/dbr.js';
 import {BarcodeScanner, EnumBarcodeFormat} from 'dynamsoft-javascript-barcode';
-import driverLicenseFields from '../helpers/driverLicenseFields.js';
+import driverLicenseFields from '../lib/helpers/driverLicenseFields.js';
 import Buttons from './Buttons.vue';
 import Spinner from './Spinner.vue';
 

@@ -1,11 +1,12 @@
 /*!
  * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
+import {config} from '@bedrock/core';
+import {fileURLToPath} from 'url';
+import path from 'path';
+import '@bedrock/views';
 
-const {config} = require('bedrock');
-const path = require('path');
-require('bedrock-views');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 config.paths.cache = path.join(__dirname, '.cache');
 

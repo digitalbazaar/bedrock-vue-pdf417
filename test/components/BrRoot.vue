@@ -15,10 +15,12 @@
     <q-footer />
   </q-layout>
 </template>
+
 <script>
 export default {
   name: 'BrRoot'
 };
 </script>
+
 <style>
 </style>
