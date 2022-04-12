@@ -182,7 +182,7 @@ export default {
         settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
         settings.region = this.region;
         settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
-        settings.deblurLevel = 7;
+        settings.deblurLevel = 9;
         this.scanner.updateRuntimeSettings(settings);
 
         await this.scanner.updateVideoSettings({
