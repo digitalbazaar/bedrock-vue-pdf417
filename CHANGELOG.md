@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 5.1.0 - TBD
+
+### Changed
+- Update deblurLevel to improve scanning.
+
 ## 5.0.0 - 2022-04-10
 
 ### Changed
