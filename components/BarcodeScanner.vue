@@ -322,7 +322,7 @@ export default {
       const settings = await this.reader.getRuntimeSettings();
       settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
       settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
-      settings.deblurLevel = 7;
+      settings.deblurLevel = 9;
       await this.reader.updateRuntimeSettings(settings);
     },
     close() {
