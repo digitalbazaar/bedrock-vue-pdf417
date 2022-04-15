@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 5.2.1 - 2022-04-13
+
+### Fixed
+- Fix bug preventing loader from showing when scanning via upload.
+
 ## 5.2.0 - 2022-04-13
 
 ### Changed
