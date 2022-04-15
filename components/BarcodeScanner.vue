@@ -37,12 +37,12 @@
         </slot>
       </div>
       <!-- Video Stream -->
-      <div class="dce-video-container" />
+      <div v-show="showVideo" class="dce-video-container" />
     </div>
 
     <!-- Tip Text -->
     <div
-      v-if="!cameraError && !loadingCamera && !scanning"
+      v-if="showTipText"
       ref="tipText"
       class="text-white text-center"
       style="position: absolute;"
@@ -52,12 +52,12 @@
 
     <!-- Close -->
     <q-btn
-      v-if="!loadingCamera && !scanning"
+      v-if="showClose"
       flat
       fab
       :ripple="false"
       size="16px"
-      :color="cameraError ? 'priamry' : 'white'"
+      :color="cameraError ? 'primary' : 'white'"
       icon="fas fa-times"
       class="q-ma-sm close-btn"
       @click.native="close()" />
@@ -118,6 +118,15 @@ export default {
     };
   },
   computed: {
+    showTipText() {
+      return !(this.cameraError || this.loadingCamera || this.scanning);
+    },
+    showClose() {
+      return !(this.loadingCamera || this.scanning);
+    },
+    showVideo() {
+      return !(this.loadingCamera || this.scanning);
+    },
     regionMaskEdgeLength() {
       const regionMaskEdgeLength =
         this.regionScale * Math.min(this.clientWidth, this.clientHeight);
