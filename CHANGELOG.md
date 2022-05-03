@@ -4,7 +4,6 @@
 
 ### Changed
 - Update `dynamsoft-javascript-barcode` to latest release of 9.0.1.
-- Update BarcodeScanner to now accept a licenceServer.
 
 ## 5.2.1 - 2022-04-15
 

@@ -165,11 +165,6 @@ export default {
   async mounted() {
     if(!BarcodeReader.license) {
       BarcodeReader.license = this.pdf417.license;
-      // note: this allows developers to optionally use a Dynamsoft SDK
-      // developer license
-      if(this.pdf417.licenseServer) {
-        BarcodeReader.licenseServer = this.pdf417.licenseServer;
-      }
     }
     this.clientHeight = document.body.clientHeight;
     this.clientWidth = document.body.clientWidth;
