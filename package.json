@@ -28,7 +28,7 @@
     "components/*"
   ],
   "dependencies": {
-    "dynamsoft-javascript-barcode": "=9.0.0"
+    "dynamsoft-javascript-barcode": "=9.0.1"
   },
   "peerDependencies": {
     "@bedrock/quasar": "^6.0.0",

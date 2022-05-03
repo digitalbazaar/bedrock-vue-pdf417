@@ -37,7 +37,9 @@
         </slot>
       </div>
       <!-- Video Stream -->
-      <div v-show="showVideo" class="dce-video-container" />
+      <div
+        v-show="showVideo"
+        class="dce-video-container" />
     </div>
 
     <!-- Tip Text -->
