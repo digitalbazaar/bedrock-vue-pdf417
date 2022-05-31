@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'BrRoot'
+  name: 'App'
 };
 </script>
 
