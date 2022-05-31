@@ -1,6 +1,6 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 6.0.0 - 2022-06-xx
+## 6.0.0 - 2022-05-31
 
 ### Changed
 - **BREAKING**: Update peer deps:
