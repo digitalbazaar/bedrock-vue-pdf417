@@ -1,5 +1,15 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 6.0.0 - 2022-06-xx
+
+### Changed
+- **BREAKING**: Update peer deps:
+  - `vue@3`
+  - `@bedrock/quasar@8`.
+
+### Removed
+- Remove unused peer dependencies.
+
 ## 5.2.1 - 2022-04-15
 
 ### Fixed
