@@ -1,6 +1,5 @@
 <template>
-  <q-page
-    class="column">
+  <q-page class="column">
     <BarcodeScanner
       v-if="!result && !error"
       guide-color="#63C6C2"
@@ -39,7 +38,7 @@
 import {BarcodeScanner} from '@bedrock/vue-pdf417';
 
 export default {
-  name: 'Home',
+  name: 'HomePage',
   components: {BarcodeScanner},
   data() {
     return {
