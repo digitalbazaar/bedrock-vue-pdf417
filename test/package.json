@@ -5,9 +5,12 @@
   "private": true,
   "description": "Vue.js PDF417 scanner component for Bedrock Web apps test",
   "main": "index.js",
-  "browser": "./components/index.js",
+  "browser": {
+    ".": "./components/index.js"
+  },
   "less": "app.less",
   "scripts": {
+    "lint": "eslint .",
     "start": "node --preserve-symlinks dev.js",
     "test": "node --preserve-symlinks test.js test --framework karma",
     "coverage": "node --preserve-symlinks test.js test --framework karma --config ./node_modules/@bedrock/karma/lib/coverageConfig.js",
@@ -30,29 +33,26 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-vue-pdf417",
   "dependencies": {
-    "@bedrock/core": "^5.0.0",
-    "@bedrock/express": "^7.0.0",
-    "@bedrock/karma": "^3.0.0",
-    "@bedrock/quasar": "^6.0.1",
-    "@bedrock/quasar-components": "^2.0.1",
-    "@bedrock/server": "^4.0.0",
-    "@bedrock/test": "^7.0.0",
-    "@bedrock/views": "^9.0.0",
-    "@bedrock/vue": "^3.0.2",
+    "@bedrock/core": "^6.0.1",
+    "@bedrock/express": "^8.0.0",
+    "@bedrock/karma": "^5.1.0",
+    "@bedrock/quasar": "^8.0.1",
+    "@bedrock/quasar-components": "^3.0.0",
+    "@bedrock/server": "^5.0.0",
+    "@bedrock/test": "^8.0.5",
+    "@bedrock/views": "^10.0.3",
+    "@bedrock/vue": "^4.0.1",
     "@bedrock/vue-pdf417": "file:..",
     "@bedrock/web": "^2.0.0",
     "@bedrock/web-fontawesome": "^2.0.0",
-    "@bedrock/webpack": "^5.0.0",
-    "@fortawesome/fontawesome-free": "^5.15.2",
-    "vue": "^2.6.12",
-    "vue-router": "^3.5.1",
-    "vuelidate": "^0.7.6"
+    "@bedrock/webpack": "^8.0.0",
+    "vue": "^3.2.36",
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
-    "eslint": "^5.14.1",
-    "eslint-config-digitalbazaar": "^1.6.0",
-    "eslint-plugin-vue": "^5.2.2",
-    "jsdoc-to-markdown": "^4.0.1",
-    "node-fetch": "^2.3.0"
+    "eslint": "^8.16.0",
+    "eslint-config-digitalbazaar": "^3.0.0",
+    "eslint-plugin-vue": "^9.0.1",
+    "jsdoc-to-markdown": "^7.1.1"
   }
 }
