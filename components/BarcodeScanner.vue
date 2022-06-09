@@ -105,7 +105,6 @@ export default {
     return {
       loadingCamera: true,
       scanning: false,
-      isDestroyed: false,
       scanner: null,
       reader: null,
       dlInfo: null,
@@ -175,8 +174,7 @@ export default {
       this.cameraError = true;
     }
   },
-  async beforeDestroy() {
-    this.isDestroyed = true;
+  async beforeUnmount() {
     if(this.scanner) {
       await this.scanner.destroyContext();
     }

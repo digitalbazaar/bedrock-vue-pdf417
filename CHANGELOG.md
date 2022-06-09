@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 6.0.1 - 2022-06-xx
+
+### Fixed
+- Use `beforeUnmount` instead of `beforeDestroy` for vue 3.
+
 ## 6.0.0 - 2022-05-31
 
 ### Changed
