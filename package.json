@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/vue-pdf417",
-  "version": "6.0.1-0",
+  "version": "6.0.1",
   "type": "module",
   "description": "Vue.js PDF417 scanner component for Bedrock Web apps",
   "module": "./lib/index.js",
