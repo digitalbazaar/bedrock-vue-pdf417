@@ -1,6 +1,6 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 7.0.0 - 2022-12-dd
+## 7.0.0 - 2022-12-21
 
 ### Changed
 - **BREAKING**: Update barcode reader to version 9.6.1.
