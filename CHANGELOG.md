@@ -1,6 +1,6 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 8.0.0 - 2023-TBD
+## 8.0.0 - 2023-01-23
 
 ### Changed
 - **BREAKING**: Update `@bedrock/quasar` peer dep to v9.0.
