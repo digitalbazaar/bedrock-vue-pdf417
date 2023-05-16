@@ -222,11 +222,10 @@ export default {
         this.loadingCamera = false;
       }
     },
-    getDLInfo(txt) {
+    getDLInfo({txt, bytes}) {
       const lines = txt.split('\n');
       const abbrs = Object.keys(driverLicenseFields);
-      const dlInfo = {};
-      dlInfo['raw'] = txt
+      const dlInfo = {raw: bytes};
       lines.forEach((line, i) => {
         let abbr;
         let content;
@@ -306,7 +305,9 @@ export default {
               this.$emit('error', message);
               return;
             }
-            this.$emit('result', this.getDLInfo(results[0].barcodeText));
+            this.$emit('result', this.getDLInfo({
+              txt: results[0].barcodeText, bytes: results[0].barcodeText
+            }));
           } catch(e) {
             console.error(e);
             const message = 'There was an error scanning your license. ' +
