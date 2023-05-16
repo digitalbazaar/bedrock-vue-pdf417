@@ -226,6 +226,7 @@ export default {
       const lines = txt.split('\n');
       const abbrs = Object.keys(driverLicenseFields);
       const dlInfo = {};
+      dlInfo['raw'] = txt
       lines.forEach((line, i) => {
         let abbr;
         let content;

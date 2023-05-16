@@ -1,6 +1,9 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 8.0.1 - 2023-xx-xx
+## 8.1.0 - 2023-05-xx
+
+### Added
+- Add property `raw` to `dlInfo` to send raw barcode data.
 
 ### Changed
 - Update development and testing dependencies.
