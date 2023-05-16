@@ -3,8 +3,8 @@
  */
 import * as brQuasar from '@bedrock/quasar';
 import * as brVue from '@bedrock/vue';
-import App from './App.vue';
 import {createRouter, createWebHistory} from 'vue-router';
+import App from './App.vue';
 import {default as iconSet} from 'quasar/icon-set/fontawesome-v5.js';
 import Quasar from 'quasar';
 import '@bedrock/web-fontawesome';
