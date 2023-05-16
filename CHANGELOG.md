@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 8.0.1 - 2023-xx-xx
+
+### Fixed
+- Fix config so karma tests can be run.
+
 ## 8.0.0 - 2023-01-23
 
 ### Changed
