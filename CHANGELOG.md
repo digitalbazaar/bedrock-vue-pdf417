@@ -2,6 +2,9 @@
 
 ## 8.0.1 - 2023-xx-xx
 
+### Changed
+- Update development and testing dependencies.
+
 ### Fixed
 - Fix config so karma tests can be run.
 
