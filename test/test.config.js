@@ -16,5 +16,9 @@ config.karma.config.webpack.resolve = {
   alias: {
     quasar$: path.resolve(
       __dirname, 'node_modules/quasar/dist/quasar.umd.js')
-  }
+  },
+  modules: [
+    path.resolve(__dirname, '..', 'node_modules'),
+    path.resolve(__dirname, 'node_modules')
+  ]
 };
