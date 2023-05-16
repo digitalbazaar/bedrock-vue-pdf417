@@ -13,8 +13,8 @@
     "lint": "eslint .",
     "start": "node --preserve-symlinks dev.js",
     "test": "node --preserve-symlinks test.js test --framework karma",
-    "coverage": "node --preserve-symlinks test.js test --framework karma --config ./node_modules/@bedrock/karma/lib/coverageConfig.js",
-    "coverage-ci": "node --preserve-symlinks test.js test --framework karma --config ./node_modules/@bedrock/karma/lib/coverageConfig.js"
+    "coverage": "node --preserve-symlinks test.js test --framework karma-coverage",
+    "coverage-ci": "node --preserve-symlinks test.js test --framework karma-coverage-ci"
   },
   "repository": {
     "type": "git",
