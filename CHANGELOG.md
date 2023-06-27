@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 8.1.1 - 2023-06-xx
+
+### Fixed
+- Fix `getDLInfo` API call.
+
 ## 8.1.0 - 2023-06-15
 
 ### Added

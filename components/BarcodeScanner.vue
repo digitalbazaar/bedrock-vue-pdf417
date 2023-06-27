@@ -207,7 +207,7 @@ export default {
         });
 
         this.scanner.onUniqueRead = txt => {
-          this.$emit('result', this.getDLInfo(txt));
+          this.$emit('result', this.getDLInfo({txt}));
         };
 
         this.scanner.dce.regionMaskStrokeStyle = this.guideColor;
