@@ -28,7 +28,7 @@
         <slot
           v-if="loadingCamera && !scanning"
           name="cameraSpinner">
-          <Spinner />
+          <BcsSpinner />
         </slot>
         <slot
           v-if="scanning"
@@ -37,7 +37,9 @@
         </slot>
       </div>
       <!-- Video Stream -->
-      <div v-show="showVideo" class="dce-video-container" />
+      <div
+        v-show="showVideo"
+        class="dce-video-container" />
     </div>
 
     <!-- Tip Text -->
@@ -60,32 +62,32 @@
       :color="cameraError ? 'primary' : 'white'"
       icon="fas fa-times"
       class="q-ma-sm close-btn"
-      @click.native="close()" />
+      @click="close()" />
     <!-- Buttons -->
-    <Buttons
+    <BcsButtons
       :loading-camera="loadingCamera"
       :scanning="scanning"
       :camera-list="cameraList"
-      @updateCamera="updateCamera($event)"
+      @update-camera="updateCamera($event)"
       @upload="upload($event)" />
   </div>
 </template>
 
 <script>
 /*!
-  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
+  * Copyright (c) 2022-2024 Digital Bazaar, Inc. All rights reserved.
   */
-import BarcodeReader from '../lib/helpers/dbr.js';
 import {BarcodeScanner, EnumBarcodeFormat} from 'dynamsoft-javascript-barcode';
+import BarcodeReader from '../lib/helpers/dbr.js';
+import BcsButtons from './BcsButtons.vue';
+import BcsSpinner from './BcsSpinner.vue';
 import driverLicenseFields from '../lib/helpers/driverLicenseFields.js';
-import Buttons from './Buttons.vue';
-import Spinner from './Spinner.vue';
 
 export default {
   name: 'BarcodeScanner',
   components: {
-    Buttons,
-    Spinner
+    BcsButtons,
+    BcsSpinner
   },
   props: {
     pdf417: {
@@ -101,6 +103,11 @@ export default {
       default: 'rgb(254, 142, 20)'
     }
   },
+  emits: [
+    'close',
+    'error',
+    'result'
+  ],
   data() {
     return {
       loadingCamera: true,
