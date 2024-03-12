@@ -33,7 +33,7 @@
 
 <script>
 /*!
- * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2024 Digital Bazaar, Inc. All rights reserved.
  */
 import {BarcodeScanner} from '@bedrock/vue-pdf417';
 
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     retry() {
-      window.scrollTo({top: 0})
+      window.scrollTo({top: 0});
       this.result = null;
       this.error = null;
     }

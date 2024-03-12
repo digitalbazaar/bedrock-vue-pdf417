@@ -47,14 +47,11 @@
 
 <script>
 /*!
-  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
+  * Copyright (c) 2022-2024 Digital Bazaar, Inc. All rights reserved.
   */
 
 export default {
-  name: 'Buttons',
-  components: {
-
-  },
+  name: 'BcsButtons',
   props: {
     cameraList: {
       type: Array,
@@ -69,6 +66,10 @@ export default {
       default: undefined
     }
   },
+  emits: [
+    'upload',
+    'updateCamera'
+  ],
   data() {
     return {
       sound: true
