@@ -5,7 +5,7 @@
   "description": "Vue.js PDF417 scanner component for Bedrock Web apps",
   "module": "./lib/index.js",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint --ext .cjs,.js,.vue ."
   },
   "repository": {
     "type": "git",
@@ -36,11 +36,11 @@
     "vue": "^3.2.45"
   },
   "devDependencies": {
-    "eslint": "^8.40.0",
-    "eslint-config-digitalbazaar": "^4.2.0",
-    "eslint-plugin-jsdoc": "^41.1.2",
-    "eslint-plugin-vue": "^9.13.0",
-    "jsdoc": "^4.0.2",
-    "jsdoc-to-markdown": "^8.0.0"
+    "eslint": "^8.57.0",
+    "eslint-config-digitalbazaar": "^5.0.1",
+    "eslint-plugin-jsdoc": "^48.2.1",
+    "eslint-plugin-quasar": "^1.1.0",
+    "eslint-plugin-unicorn": "^51.0.1",
+    "eslint-plugin-vue": "^9.23.0"
   }
 }
