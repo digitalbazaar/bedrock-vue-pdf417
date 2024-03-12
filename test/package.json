@@ -48,11 +48,5 @@
     "@bedrock/webpack": "^9.0.3",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.40.0",
-    "eslint-config-digitalbazaar": "^4.2.0",
-    "eslint-plugin-vue": "^9.13.0",
-    "jsdoc-to-markdown": "^8.0.0"
   }
 }

@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 8.1.2 - 2024-xx-xx
+
+### Changed
+- Update lint tooling and fix lint issues.
+
 ## 8.1.1 - 2023-06-27
 
 ### Fixed
