@@ -1,6 +1,6 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 9.0.0 - 2024-xx-xx
+## 9.0.0 - 2024-03-14
 
 ### Changed
 - Update lint tooling and fix lint issues.
