@@ -193,9 +193,9 @@ export default {
         this.scanner ||
           (this.scanner = await BarcodeScanner.createInstance());
         const settings = await this.scanner.getRuntimeSettings();
-        settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
+        // settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
         settings.region = this.region;
-        settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
+        // settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
         settings.deblurLevel = 9;
         this.scanner.updateRuntimeSettings(settings);
 
@@ -230,27 +230,27 @@ export default {
       }
     },
     getDLInfo({txt}) {
-      const lines = txt.split('\n');
-      const abbrs = Object.keys(driverLicenseFields);
-      const dlInfo = {raw: txt};
-      lines.forEach((line, i) => {
-        let abbr;
-        let content;
-        if(i === 1) {
-          abbr = 'DAQ';
-          content = line.substring(line.indexOf(abbr) + 3);
-        } else {
-          abbr = line.substring(0, 3);
-          content = line.substring(3).trim();
-        }
-        if(abbrs.includes(abbr)) {
-          dlInfo[abbr] = {
-            description: driverLicenseFields[abbr],
-            value: content,
-          };
-        }
-      });
-      return dlInfo;
+      // const lines = txt.split('\n');
+      // const abbrs = Object.keys(driverLicenseFields);
+      // const dlInfo = {raw: txt};
+      // lines.forEach((line, i) => {
+      //   let abbr;
+      //   let content;
+      //   if(i === 1) {
+      //     abbr = 'DAQ';
+      //     content = line.substring(line.indexOf(abbr) + 3);
+      //   } else {
+      //     abbr = line.substring(0, 3);
+      //     content = line.substring(3).trim();
+      //   }
+      //   if(abbrs.includes(abbr)) {
+      //     dlInfo[abbr] = {
+      //       description: driverLicenseFields[abbr],
+      //       value: content,
+      //     };
+      //   }
+      // });
+      return {dlInfo: {}};
     },
     cvsDrawArea() {
       this.maskCanvas.width = this.clientWidth;
@@ -334,8 +334,8 @@ export default {
     async imageScan() {
       this.reader || (this.reader = await BarcodeReader.createInstance());
       const settings = await this.reader.getRuntimeSettings();
-      settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
-      settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
+      // settings.barcodeFormatIds = EnumBarcodeFormat.BF_PDF417;
+      // settings.localizationModes = [16, 8, 2, 0, 0, 0, 0, 0];
       settings.deblurLevel = 9;
       await this.reader.updateRuntimeSettings(settings);
     },
