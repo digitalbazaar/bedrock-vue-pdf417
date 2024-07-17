@@ -33,7 +33,7 @@
         <slot
           v-if="scanning"
           name="scannerSpinner">
-          <Spinner />
+          <BcsSpinner />
         </slot>
       </div>
       <!-- Video Stream -->
