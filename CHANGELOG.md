@@ -1,6 +1,6 @@
 # bedrock-vue-pdf417 ChangeLog
 
-## 9.0.1 - 2024-07-dd
+## 9.0.1 - 2024-07-17
 
 ### Fixed
 - Update component name typo in template.
