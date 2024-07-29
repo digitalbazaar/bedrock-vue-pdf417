@@ -65,7 +65,7 @@
       @click="close()" />
     <!-- Buttons -->
     <BcsButtons
-      :hideUploadButton="hideUploadButton"
+      :hide-upload-button="hideUploadButton"
       :loading-camera="loadingCamera"
       :scanning="scanning"
       :camera-list="cameraList"
