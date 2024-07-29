@@ -1,5 +1,10 @@
 # bedrock-vue-pdf417 ChangeLog
 
+## 9.1.0 - 2024-07-xx
+
+### Added
+- Add property `hideUploadButton` to hide camera's upload image button.
+
 ## 9.0.1 - 2024-07-17
 
 ### Fixed
