@@ -65,6 +65,7 @@
       @click="close()" />
     <!-- Buttons -->
     <BcsButtons
+      :hideUploadButton="hideUploadButton"
       :loading-camera="loadingCamera"
       :scanning="scanning"
       :camera-list="cameraList"
@@ -101,6 +102,10 @@ export default {
     guideColor: {
       type: String,
       default: 'rgb(254, 142, 20)'
+    },
+    hideUploadButton: {
+      type: Boolean,
+      default: undefined
     }
   },
   emits: [

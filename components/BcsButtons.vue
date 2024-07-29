@@ -28,12 +28,14 @@
     </q-btn-dropdown>
     <!-- Upload Button -->
     <input
+      v-if="!hideUploadButton"
       ref="uploadImage"
       type="file"
       accept="image/png,image/jpeg,image/bmp,image/gif"
       style="display: none"
       @change="upload($event)">
     <q-btn
+      v-if="!hideUploadButton"
       flat
       no-caps
       text-color="white"
@@ -58,6 +60,10 @@ export default {
       default: undefined
     },
     loadingCamera: {
+      type: Boolean,
+      default: undefined
+    },
+    hideUploadButton: {
       type: Boolean,
       default: undefined
     },
