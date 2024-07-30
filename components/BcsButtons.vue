@@ -65,7 +65,7 @@ export default {
     },
     hideUploadButton: {
       type: Boolean,
-      default: undefined
+      default: false
     },
     scanning: {
       type: Boolean,
